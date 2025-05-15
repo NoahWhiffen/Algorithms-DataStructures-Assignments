@@ -1,5 +1,5 @@
 // Noah Whiffen - SD 12
-// Average Temp Calculator
+// Movie Theater Seating System
 // May 15th, 2025
 
 import java.util.Scanner;
