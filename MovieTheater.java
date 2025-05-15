@@ -21,8 +21,16 @@ public class MovieTheater {
     }
 
     // Method to display all seats
-    public void DisplaySeating() {
+    public void DisplaySeating(MovieTheater theater) {
+        System.out.println("Current Seating: ");
 
+        for (int i = 0; i < ROWS; i++) {
+            System.out.print("Row " + (i + 1) + ": ");
+            for (int j = 0; j < COLUMNS; j++) {
+                System.out.print("[" + seats[i][j] + "]");
+            }
+            System.out.println();
+        }
     }
 
     // Method to reserve seats
@@ -54,10 +62,16 @@ public class MovieTheater {
         
             switch (option) {
                 case "1":
+                    theater.DisplaySeating();
+                    break;
                 case "2":
+                    theater.ReserveSeating();
+                    break;
                 case "3":
+                    theater.CancelSeating();
+                    break;
                 case "4":
-                    System.out.println("You are now exiting the program.")
+                    System.out.println("You are now exiting the program.");
                 default:
                     System.out.println("Invalid option. Must be a number from 1 to 4.");
             }
