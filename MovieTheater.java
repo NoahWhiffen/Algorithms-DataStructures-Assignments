@@ -35,7 +35,24 @@ public class MovieTheater {
 
     // Method to reserve seats
     public void ReserveSeating() {
+        Scanner scanner = new Scanner(System.in);
 
+        System.out.println("Enter row (1-10): ");
+        int row = scanner.nextInt();
+
+        System.out.println("Enter column (1-10): ");
+        int column = scanner.nextInt();
+
+        // Validate input
+        if (row < 0 || row >= ROWS || column < 0 || column >= COLUMNS) {
+            System.out.println("Invalid seat selection. Please try again.");
+            return;
+        }
+
+        // Check if seat is available
+
+        // Reserve the seat
+        
     }
 
     // Method to cancel seats
