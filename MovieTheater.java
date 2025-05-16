@@ -1,6 +1,6 @@
 // Noah Whiffen - SD 12
 // Movie Theater Seating System
-// May 15th, 2025
+// May 15th - May 16th, 2025
 
 import java.util.Scanner;
 
@@ -21,7 +21,7 @@ public class MovieTheater {
     }
 
     // Method to display all seats
-    public void DisplaySeating(MovieTheater theater) {
+    public void DisplaySeating() {
         System.out.println("Current Seating: ");
 
         for (int i = 0; i < ROWS; i++) {
@@ -50,9 +50,15 @@ public class MovieTheater {
         }
 
         // Check if seat is available
-
-        // Reserve the seat
-        
+        if (seats[row - 1][column - 1].equals("Empty")) {
+            scanner.nextLine();
+            System.out.println("Enter name for reservation: ");
+            String name = scanner.nextLine();
+            seats[row - 1][column - 1] = name;
+            System.out.println("Seat reserved successfully.");
+        } else {
+            System.out.println("Sorry, that seat is alreay taken.")
+        }
     }
 
     // Method to cancel seats
