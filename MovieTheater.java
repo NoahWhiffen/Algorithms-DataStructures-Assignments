@@ -9,8 +9,8 @@ public class MovieTheater {
     private String[][] seats;
     private final int ROWS = 10;
     private final int COLUMNS = 10;
-    // private int rowIndex = ROWS - 1;
-    // private int columnIndex = COLUMNS - 1;
+    private int rowIndex = ROWS - 1;
+    private int columnIndex = COLUMNS - 1;
     
     // Constructor to create seats data structure
     public MovieTheater() {
@@ -64,17 +64,15 @@ public class MovieTheater {
        // add input type validation
 
         // Check if seat is available
-        if (seats[row][column].equals("Empty")) {
+        if (seats[rowIndex][columnIndex].equals("Empty")) {
             scanner.nextLine();
             System.out.println("Enter name for reservation: ");
             String name = scanner.nextLine();
-            seats[row - 1][column - 1] = name;
+            seats[rowIndex][columnIndex] = name;
             System.out.println("Seat reserved successfully.");
         } else {
             System.out.println("Sorry, that seat is already taken.");
         }
-
-        scanner.close();
     }
 
     // Method to cancel seats
@@ -95,8 +93,8 @@ public class MovieTheater {
         }
 
         // Validate the input (make sure within range and that seat isnt empty)
-        if (!seats[row][column].equals("Empty")) {
-            System.out.printf("This seat is reserved for %s\n", seats[row][column]);
+        if (!seats[rowIndex][columnIndex].equals("Empty")) {
+            System.out.printf("This seat is reserved for %s\n", seats[rowIndex][columnIndex]);
             System.out.println("Are you sure you want to cancel this reservation? (y/n)");
             
             char choice;
@@ -104,7 +102,7 @@ public class MovieTheater {
                 choice = scanner.next().charAt(0);
             // input validation (y or n)
                 if (choice == 'y') {
-                    seats[row][column] = "Empty";
+                    seats[rowIndex][columnIndex] = "Empty";
                     System.out.println("Seat cancelled successfully.");
                 } else if (choice == 'n') {
                     return;
@@ -116,7 +114,6 @@ public class MovieTheater {
             System.out.println("Sorry, that seat is empty.");
         }
 
-        scanner.close();
     }
 
     // Main Program
@@ -154,5 +151,7 @@ public class MovieTheater {
                     System.out.println("Invalid option. Must be a number from 1 to 4.");
             }
         } while (!option.equals("4"));
+
+        scanner.close();
     } 
 }
