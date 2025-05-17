@@ -9,9 +9,9 @@ public class MovieTheater {
     private String[][] seats;
     private final int ROWS = 10;
     private final int COLUMNS = 10;
-    private int rowIndex = ROWS - 1;
-    private int columnIndex = COLUMNS - 1;
-    
+    int row;
+    int column;
+
     // Constructor to create seats data structure
     public MovieTheater() {
         seats = new String[ROWS][COLUMNS];
@@ -49,52 +49,85 @@ public class MovieTheater {
     public void ReserveSeating() {
         Scanner scanner = new Scanner(System.in);
 
+        while (true) {
         System.out.println("Enter row (1-10): ");
-        int row = scanner.nextInt();
-
-        System.out.println("Enter column (1-10): ");
-        int column = scanner.nextInt();
-
-        // Validate input
-        if (row < 0 || row >= ROWS || column < 0 || column >= COLUMNS) {
-            System.out.println("Invalid seat selection. Please try again.");
-            return;
+        if (scanner.hasNextInt()) {
+            row = scanner.nextInt();
+            if (row < 0 || row >= ROWS) {
+                System.out.println("Row must be between 1 and 10.");
+            } else {
+                break;
+            }
+        } else {
+            System.out.println("Invalid input. Please enter a number.");
+            scanner.next();
+        }
         }
 
-       // add input type validation
+        while (true) {
+        System.out.println("Enter column (1-10): ");
+        if (scanner.hasNextInt()) {
+            column = scanner.nextInt();
+            if ( column < 0 || column >= COLUMNS) {
+                System.out.println("Column must be between 1 and 10.");
+            } else {
+                break;
+            }
+        } else {
+            System.out.println("Invalid input. Please enter a number.");
+            scanner.next();
+        }
+    }
 
         // Check if seat is available
-        if (seats[rowIndex][columnIndex].equals("Empty")) {
+        if (seats[row - 1][column - 1].equals("Empty")) {
             scanner.nextLine();
             System.out.println("Enter name for reservation: ");
             String name = scanner.nextLine();
-            seats[rowIndex][columnIndex] = name;
+            seats[row - 1][column - 1] = name;
             System.out.println("Seat reserved successfully.");
         } else {
             System.out.println("Sorry, that seat is already taken.");
+            scanner.next();
         }
     }
 
     // Method to cancel seats
     public void CancelSeating() {
-        // Prompt for row and column of seat
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter row (1-10): ");
-        int row = scanner.nextInt();
-
-        System.out.println("Enter column (1-10): ");
-        int column = scanner.nextInt();
-
-        
-        if (row < 0 || row >= ROWS || column < 0 || column >= COLUMNS) {
-            System.out.println("Invalid seat selection. Please try again.");
-            return;
+        while (true) {
+            System.out.println("Enter row (1-10): ");
+            if (scanner.hasNextInt()) {
+                row = scanner.nextInt();
+                if (row < 0 || row >= ROWS) {
+                    System.out.println("Row must be between 1 and 10.");
+                } else {
+                    break;
+                }
+            } else {
+                System.out.println("Invalid input. Please enter a number.");
+                scanner.next();
+            }
         }
 
+        while (true) {
+            System.out.println("Enter column (1-10): ");
+            if (scanner.hasNextInt()) {
+                column = scanner.nextInt();
+                if ( column < 0 || column >= COLUMNS) {
+                    System.out.println("Column must be between 1 and 10.");
+                } else {
+                    break;
+                }
+            } else {
+                System.out.println("Invalid input. Please enter a number.");
+                scanner.next();
+            }
+        }
         // Validate the input (make sure within range and that seat isnt empty)
-        if (!seats[rowIndex][columnIndex].equals("Empty")) {
-            System.out.printf("This seat is reserved for %s\n", seats[rowIndex][columnIndex]);
+        if (!seats[row - 1][column - 1].equals("Empty")) {
+            System.out.printf("This seat is reserved for %s\n", seats[row - 1][column - 1]);
             System.out.println("Are you sure you want to cancel this reservation? (y/n)");
             
             char choice;
@@ -102,7 +135,7 @@ public class MovieTheater {
                 choice = scanner.next().charAt(0);
             // input validation (y or n)
                 if (choice == 'y') {
-                    seats[rowIndex][columnIndex] = "Empty";
+                    seats[row - 1][column - 1] = "Empty";
                     System.out.println("Seat cancelled successfully.");
                 } else if (choice == 'n') {
                     return;
@@ -112,8 +145,7 @@ public class MovieTheater {
             } while(choice != 'y' && choice != 'n');
         } else {
             System.out.println("Sorry, that seat is empty.");
-        }
-
+        }    
     }
 
     // Main Program
