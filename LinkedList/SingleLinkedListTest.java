@@ -82,7 +82,24 @@ public class SingleLinkedListTest {
     }
 
     //implement deleting a node from single linked list
-    public void deleteLinkedList(int nodeValue, int location) {
+    public void delete(int nodeValue, int location) {
         
+        // If list doesn't exist
+        if (head == null) {
+            System.out.println("The linked list does not exist.");
+            return;
+        }
+
+        // Invalid Position (Less than or greater than the size of the list)
+        if (location < 0 || location >= size) {
+            System.out.println("Invalid position: " + location);
+            return;
+        }
+
+        // Delete at the beginning
+
+        // Delete at the end
+
+        // Delete from the middle
     }
 }
