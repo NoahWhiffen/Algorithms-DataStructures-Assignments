@@ -97,9 +97,34 @@ public class SingleLinkedListTest {
         }
 
         // Delete at the beginning
+        if (location == 0) {
+            head = head.next;
+            size--;
+
+            if (size == 0) {
+                tail = null;
+            }
+            return;
+        }
 
         // Delete at the end
+        if (location == size - 1) {
+            Node tempNode = head;
+            for (int i = 0; i < size - 2; i++) {
+                tempNode = tempNode.next;
+            }
+            tempNode.next = null;
+            tail = tempNode;
+            size--;
+            return;
+        }
 
         // Delete from the middle
+        Node tempNode = head;
+        for (int i = 0; i < location - 1; i++) {
+            tempNode = tempNode.next;
+        }
+        tempNode.next = tempNode.next.next;
+        size--;
     }
 }
