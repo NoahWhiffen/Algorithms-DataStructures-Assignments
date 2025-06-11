@@ -2,26 +2,52 @@ package Assignment4;
 
 public class StateManagement {
     
-    // Inner Node class
-    private static class Node<T> {
-        T data;
-        Node<T> prev;
-        Node<T> next;
+    class Node {
+        int data;
+        Node next;
+        Node prev;
 
-        Node(T data) {
+        Node(int data) {
             this.data = data;
-        }
-
-        private Node<T> current;
+        } 
     }
 
+    class LinkedList {
+        Node head = null;
+        Node current = null;
+
     // Add a new state (clears redo history) -- this is a newNode
+    public void addState(int data) {
+        Node newNode = new Node(data);
+
+        if (head == null) {
+            head = newNode;
+            current = newNode;
+        } else {
+            if (current != null) {
+                current.next = null;
+            }
+            newNode.prev = current;
+            if (current != null) {
+                current.next = newNode;
+            }
+            current = newNode;
+        }
+    }
 
     // undo function
+    public void undo() {
+        if (current != null && current.prev != null) {
+            current = current.prev;
+        } else {
+            System.out.println("Nothing to undo.");
+        }
+    }
 
     // redo function
 
     // get current state
 
     // create a main file to test it
+    }
 }
