@@ -1,3 +1,4 @@
+package Assignment2;
 // Noah Whiffen - SD 12
 // Movie Theater Seating System
 // May 15th - May 16th, 2025
