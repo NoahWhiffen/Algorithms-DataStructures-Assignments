@@ -1,13 +1,13 @@
 package Assignment4;
 
-public class StateManagement {
+public class StateManagement<T> {
     
     class Node {
-        int data;
+        T data;
         Node next;
         Node prev;
 
-        Node(int data) {
+        Node(T data) {
             this.data = data;
         } 
     }
@@ -17,7 +17,7 @@ public class StateManagement {
         Node current = null;
 
     // Add a new state (clears redo history) -- this is a newNode
-    public void addState(int data) {
+    public void addState(T data) {
         Node newNode = new Node(data);
 
         if (head == null) {
@@ -54,7 +54,7 @@ public class StateManagement {
     }
 
     // get current state
-    public int getCurrentState() {
+    public T getCurrentState() {
         if (current != null) {
             return current.data;
         } else {

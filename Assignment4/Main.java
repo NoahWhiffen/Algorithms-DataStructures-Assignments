@@ -10,13 +10,15 @@ public class Main {
         history.addState(3);
         history.addState(4);
 
-        System.out.println("Current State: " + history.getCurrentState());
+        System.out.println("Current state: " + history.getCurrentState());
 
         // Undo
+        history.undo();
+        System.out.println("Current state after undo: " + history.getCurrentState());
 
-        //Re do
-
-        // Add a new state
+        // Redo
+        history.redo();
+        System.out.println("Current state after redo: " + history.getCurrentState());
 
         // Attempt a redo
     }
