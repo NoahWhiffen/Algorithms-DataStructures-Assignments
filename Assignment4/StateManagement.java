@@ -45,9 +45,21 @@ public class StateManagement {
     }
 
     // redo function
+    public void redo() {
+        if (current != null && current.next != null) {
+            current = current.next;
+        } else {
+            System.out.println("Nothing to redo.");
+        }
+    }
 
     // get current state
-
-    // create a main file to test it
+    public int getCurrentState() {
+        if (current != null) {
+            return current.data;
+        } else {
+            throw new IllegalStateException("No state available.");
+        }
     }
+}
 }
