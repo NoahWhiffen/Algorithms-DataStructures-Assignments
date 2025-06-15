@@ -9,6 +9,12 @@ public class User {
     private String lastName;
     private LinkedList<Task> tasks;
 
+    public User(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.tasks = new LinkedList<>();
+    }
+
     // Getters
     public String getFirstName() {
         return firstName;
@@ -19,7 +25,7 @@ public class User {
     }
 
     public String getFullName() {
-        return firstName + lastName;
+        return firstName + " " + lastName;
     }
 
     public LinkedList<Task> getTasks() {
@@ -46,5 +52,33 @@ public class User {
 
     public String toString() {
         return "User: " + firstName + " " + lastName + tasks.toString();
+    }
+
+    // Utility  
+    private boolean isTaskNameUnique(String description) {
+        for (Task task : tasks) {
+            if (task.getDescription().equalsIgnoreCase(description)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean addTask(Task task) {
+        if (isTaskNameUnique(task.getDescription())) {
+            tasks.add(task);
+            return true;
+        } else {
+            System.out.println("Task with description: " + task.getDescription() + " already exists.");
+            return false;
+        }
+    }
+
+    public void removeTask(Task task) {
+        tasks.remove(task);
+    }
+
+    public void completeTask(int index) {
+        
     }
 }
