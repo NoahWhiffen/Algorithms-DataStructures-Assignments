@@ -7,6 +7,7 @@ public class User {
     // private int userId;
     private String firstName;
     private String lastName;
+    private LinkedList<Task> tasks;
 
     public User(String firstName, String lastName) {
         this.firstName = firstName;

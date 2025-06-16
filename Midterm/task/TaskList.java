@@ -65,7 +65,7 @@ public class TaskList {
         int count = 0;
         while(temp != null) {
             if (count == index) {
-                temp.task.setIsCompleted(true);
+                temp.task.markCompleted();
                 return true;
             }
             count++;

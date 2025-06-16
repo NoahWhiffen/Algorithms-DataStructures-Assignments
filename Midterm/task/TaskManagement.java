@@ -6,6 +6,10 @@ public class TaskManagement {
 
     private LinkedList<Task> tasks;
 
+    public TaskManagement() {
+        tasks = new LinkedList<>();
+    }
+
     private boolean isTaskNameUnique(String description) {
         for (Task task : tasks) {
             if (task.getDescription().equalsIgnoreCase(description)) {
@@ -30,6 +34,10 @@ public class TaskManagement {
     }
 
     public void completeTask(int index) {
-        
+        if (index >= 0 && index < tasks.size()) {
+            tasks.get(index).markCompleted();
+        } else {
+            System.out.println("Invalid task index.");
+        }
     }
 }

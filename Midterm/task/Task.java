@@ -5,8 +5,7 @@ import Midterm.user.*;
 
 public class Task {
     private String description;
-    private boolean isCompleted;
-    
+    private boolean isCompleted;    
 
     public Task(String description, boolean isCompleted) {
         this.description = description;
@@ -34,6 +33,10 @@ public class Task {
 
     public void setIsCompleted(boolean isCompleted) {
         this.isCompleted = isCompleted;
+    }
+
+    public void markCompleted() {
+        this.isCompleted = true;
     }
 
     public String toString() {
