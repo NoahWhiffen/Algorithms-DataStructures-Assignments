@@ -7,7 +7,6 @@ public class User {
     // private int userId;
     private String firstName;
     private String lastName;
-    private LinkedList<Task> tasks;
 
     public User(String firstName, String lastName) {
         this.firstName = firstName;
@@ -55,30 +54,5 @@ public class User {
     }
 
     // Utility  
-    private boolean isTaskNameUnique(String description) {
-        for (Task task : tasks) {
-            if (task.getDescription().equalsIgnoreCase(description)) {
-                return false;
-            }
-        }
-        return true;
-    }
 
-    public boolean addTask(Task task) {
-        if (isTaskNameUnique(task.getDescription())) {
-            tasks.add(task);
-            return true;
-        } else {
-            System.out.println("Task with description: " + task.getDescription() + " already exists.");
-            return false;
-        }
-    }
-
-    public void removeTask(Task task) {
-        tasks.remove(task);
-    }
-
-    public void completeTask(int index) {
-        
-    }
 }
