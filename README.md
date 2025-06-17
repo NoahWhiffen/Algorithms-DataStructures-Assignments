@@ -11,11 +11,8 @@ This is where I will upload all my assignments for this course.
 - [x] User class with basic user info and tasks (using LinkedList<Task>)
 - [x] UserManagement with unique user creation and storage in array
 - [x] Basic `Main` for adding users and tasks, marking tasks completed
+- [x] Replace LinkedList<Task> in User with custom TaskList
 
 ### In Progress
-- [ ] Replace LinkedList<Task> in User with custom TaskList
-- [ ] Add methods in User for:
-  - addTask(description)
-  - markTaskCompleted(index)
-  - printTasks()
+
 - [ ] Update Main to use new User task methods

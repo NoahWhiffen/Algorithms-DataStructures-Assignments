@@ -12,6 +12,18 @@ public class TaskList {
         }
     }
 
+    public TaskList() {
+        // Default constructor
+    }
+
+    public TaskList(TaskList other) {
+        Node temp = other.head;
+        while (temp != null) {
+            this.addTask(temp.task.getDescription());
+            temp = temp.next;
+        }
+    }
+
     private Node head = null;
     private Node current = null;
 
@@ -32,6 +44,32 @@ public class TaskList {
             }
             current = newNode;
         }
+    }
+
+    public boolean removeTask(Task taskToRemove) {
+        Node temp = head;
+
+        while (temp != null) {
+            if (temp.task.equals(taskToRemove)) {
+                if (temp.prev != null) {
+                    temp.prev.next = temp.next;
+                } else {
+                    head = temp.next;
+                }
+
+                if (temp.next != null) {
+                    temp.next.prev = temp.prev;
+                }
+
+                if (current == temp) {
+                    current = temp.prev != null ? temp.prev : head;
+                }
+
+                return true;
+            }
+            temp = temp.next;
+        }
+        return false;
     }
 
     public void undo() {

@@ -1,27 +1,20 @@
 package Midterm.task;
 
-import java.util.LinkedList;
-
 public class TaskManagement {
 
-    private LinkedList<Task> tasks;
+    private TaskList tasks;
 
     public TaskManagement() {
-        tasks = new LinkedList<>();
+        this.tasks = new TaskList();
     }
 
-    private boolean isTaskNameUnique(String description) {
-        for (Task task : tasks) {
-            if (task.getDescription().equalsIgnoreCase(description)) {
-                return false;
-            }
-        }
-        return true;
+    private boolean isTaskNameUnique(String description) { 
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 
     public boolean addTask(Task task) {
         if (isTaskNameUnique(task.getDescription())) {
-            tasks.add(task);
+            tasks.addTask(task.getDescription());
             return true;
         } else {
             System.out.println("Task with description: " + task.getDescription() + " already exists.");
@@ -30,14 +23,16 @@ public class TaskManagement {
     }
 
     public void removeTask(Task task) {
-        tasks.remove(task);
+        boolean removed = tasks.removeTask(task);
+        if (!removed) {
+            System.out.println("Task not found.");
+        }
     }
 
     public void completeTask(int index) {
-        if (index >= 0 && index < tasks.size()) {
-            tasks.get(index).markCompleted();
-        } else {
+        boolean success = tasks.markTaskCompleted(index);
+        if (!success) {
             System.out.println("Invalid task index.");
-        }
+        } 
     }
 }

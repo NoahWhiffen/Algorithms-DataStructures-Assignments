@@ -7,12 +7,12 @@ public class User {
     // private int userId;
     private String firstName;
     private String lastName;
-    private LinkedList<Task> tasks;
+    private TaskList tasks;
 
     public User(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.tasks = new LinkedList<>();
+        this.tasks = new TaskList();
     }
 
     // Getters
@@ -28,8 +28,8 @@ public class User {
         return firstName + " " + lastName;
     }
 
-    public LinkedList<Task> getTasks() {
-        return new LinkedList<>(tasks);
+    public TaskList getTasks() {
+        return new TaskList(this.tasks);
     }
 
     // Setters
@@ -46,7 +46,7 @@ public class User {
         this.lastName = lastName;
     }
 
-    public void setTasks(LinkedList<Task> tasks) {
+    public void setTasks(TaskList tasks) {
         this.tasks = tasks;
     }
 
@@ -54,6 +54,21 @@ public class User {
         return "User: " + firstName + " " + lastName + tasks.toString();
     }
 
-    // Utility  
+    // Utility
+    public void addTask(String description) {
+        tasks.addTask(description);
+    }
+
+    public void removeTask(Task task) {
+    tasks.removeTask(task);
+    }
+
+    public void completeTask(int index) {
+        tasks.markTaskCompleted(index);
+    }
+
+    public void printTasks() {
+        tasks.printTasks();
+    }
 
 }
