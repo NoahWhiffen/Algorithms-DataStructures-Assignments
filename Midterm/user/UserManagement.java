@@ -16,17 +16,20 @@ public class UserManagement {
 
     public boolean addUser(String firstName, String lastName) {
         if (isUserNameUnique(firstName, lastName)) {
-            users[userCount++] = new User(firstName, lastName);
-            System.out.println("User added: " + user.getFullName);
+            User newUser = new User(firstName, lastName);
+            users[userCount++] = newUser;
+            System.out.println("User added: " + newUser.getFullName());
             return true;
         } else {
-            System.out.println("User with name " + user.getFullName + "already exists.");
+            System.out.println("User with name " + firstName + " " + lastName + "already exists.");
             return false;
         }
     }
 
     public void printUsers() {
-        throw new UnsupportedOperationException("Not implemented yet");
+        for (int i = 0; i < userCount; i++) {
+            System.out.println(users[i].toString());
+        }
     }
 
     public User getUserByName(String firstName, String lastName) {

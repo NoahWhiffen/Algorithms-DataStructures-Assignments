@@ -8,12 +8,8 @@ public class TaskManagement {
         this.tasks = new TaskList();
     }
 
-    private boolean isTaskNameUnique(String description) { 
-        throw new UnsupportedOperationException("Not implemented yet");
-    }
-
     public boolean addTask(Task task) {
-        if (isTaskNameUnique(task.getDescription())) {
+        if (tasks.isTaskNameUnique(task.getDescription())) {
             tasks.addTask(task.getDescription());
             return true;
         } else {

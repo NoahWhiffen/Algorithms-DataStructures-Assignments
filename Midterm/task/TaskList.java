@@ -27,6 +27,17 @@ public class TaskList {
     private Node head = null;
     private Node current = null;
 
+    public boolean isTaskNameUnique(String description) {
+        Node temp = head;
+        while (temp != null) {
+            if (temp.task.getDescription().equalsIgnoreCase(description)) {
+                return false;
+            }
+            temp = temp.next;
+        }
+        return true;
+    }
+
     public void addTask(String description) {
         Task newTask = new Task(description, false);
         Node newNode = new Node(newTask);
