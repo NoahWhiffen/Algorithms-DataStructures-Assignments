@@ -39,6 +39,7 @@ public class Task {
         this.isCompleted = true;
     }
 
+    @Override
     public String toString() {
         return "Task: " + description + " Completed: " + isCompleted;  
     }

@@ -1,30 +1,58 @@
 package Midterm;
 
 import Midterm.task.*;
-
+import Midterm.user.*;
 public class Main {
     public static void main(String[] args) {
-        TaskList taskList = new TaskList();
+        
+        System.out.println("-------------------------------------------------");
 
-        // Add tasks
-        taskList.addTask("Buy groceries.");
-        taskList.addTask("Go to gym.");
-        taskList.addTask("Work on midterm sprint.");
+        // Create UserManagement and add users
+        UserManagement userManager = new UserManagement();
+        System.out.println("---- Adding users ----");
+        userManager.addUser("John", "Smith");
+        userManager.addUser("Jane", "Doe");
+        userManager.addUser("John", "Smith");
 
-        // Print tasks
-        System.out.println("Current Tasks:");
-        taskList.printTasks();
+        // Create users and add tasks
+        User john = new User("John", "Smith");
+        User jane = new User("Jane", "Doe");
 
-        // Change completion status of a task
-        boolean completed = taskList.markTaskCompleted(1);
+        john.addTask("Buy groceries.");
+        john.addTask("Go to gym.");
+        jane.addTask("Work on midterm sprint.");
+        jane.addTask("Go for a run");
 
-        // Confirm completion
-        System.out.println("\nTask 1 marked as completed: " + completed);
+        // Mark a task complete
+        john.completeTask(1);
+        System.out.println("Task 1 marked as completed: " + john.getTasks());
 
-        System.out.println("\nUpdated Task List:");
-        taskList.printTasks();
+        // Show task lists
+        System.out.println("\n---- John's Tasks ----");
+        john.printTasks();
 
-        // Add Users
-        System.out.println("");
+        System.out.println("\n---- Jane's Tasks ----");
+        jane.printTasks();
+
+        // Demonstrate undo and redo
+        TaskList taskList = john.getTasks();
+        System.out.println("\n ---- Performing undo and redo on John's tasks ----");
+        taskList.undo();
+        taskList.redo();
+
+        // Use TaskManagement for adding unique tasks
+        TaskManagement taskManager = new TaskManagement();
+
+        Task task1 = new Task("Make lunch.", false);
+        Task task2 = new Task("Make lunch.", false);
+
+        taskManager.addTask(task1);
+        taskManager.addTask(task2);
+
+        // Show all users from userManagement
+        System.out.println("---- All users in system ----");
+        userManager.printUsers();
+
+        System.out.println("-------------------------------------------------");
     }
 }

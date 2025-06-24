@@ -4,6 +4,11 @@ public class UserManagement {
     private User[] users;
     private int userCount;
 
+    public UserManagement() {
+        users = new User[100];
+        userCount = 0;
+    }
+
     private boolean isUserNameUnique(String firstName, String lastName) {
         String fullName = firstName + " " + lastName;
         for (int i = 0; i < userCount; i++) {
@@ -21,7 +26,7 @@ public class UserManagement {
             System.out.println("User added: " + newUser.getFullName());
             return true;
         } else {
-            System.out.println("User with name " + firstName + " " + lastName + "already exists.");
+            System.out.println("User with name " + firstName + " " + lastName + " already exists.");
             return false;
         }
     }
