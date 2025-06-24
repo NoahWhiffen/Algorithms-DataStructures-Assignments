@@ -1,0 +1,25 @@
+# Ignore compiled class files
+*.class
+
+# Ignore build output directories
+/bin/
+/out/
+/target/
+
+# VS Code settings and workspace files
+.vscode/
+
+# IntelliJ IDEA project files
+.idea/
+*.iml
+
+# Mac system files
+.DS_Store
+
+# Logs
+*.log
+
+# Maven and Gradle specific files (if you ever use them)
+.mvn/
+.gradle/
+build/
