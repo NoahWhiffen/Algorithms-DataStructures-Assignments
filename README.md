@@ -12,7 +12,7 @@ This is where I will upload all my assignments for this course.
 - [x] UserManagement with unique user creation and storage in array
 - [x] Basic `Main` for adding users and tasks, marking tasks completed
 - [x] Replace LinkedList<Task> in User with custom TaskList
+- [x] Update Main to use new User task methods
 
 ### In Progress
 
-- [ ] Update Main to use new User task methods
