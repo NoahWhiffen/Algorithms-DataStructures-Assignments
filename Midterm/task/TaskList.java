@@ -19,7 +19,9 @@ public class TaskList {
     public TaskList(TaskList other) {
         Node temp = other.head;
         while (temp != null) {
-            this.addTask(temp.task.getDescription());
+            Task originalTask = temp.task;
+            Task copiedTask = new Task(originalTask.getDescription(), originalTask.getIsCompleted());
+            this.addTask(copiedTask);
             temp = temp.next;
         }
     }
@@ -40,7 +42,11 @@ public class TaskList {
 
     public void addTask(String description) {
         Task newTask = new Task(description, false);
-        Node newNode = new Node(newTask);
+        addTask(newTask);
+    }
+
+    public void addTask(Task task) {
+        Node newNode = new Node(task);
 
         if (head == null) {
             head = newNode;
@@ -83,6 +89,19 @@ public class TaskList {
         return false;
     }
 
+    public Task getTaskAt(int index) {
+        Node temp = head;
+        int count = 0;
+        while (temp != null) {
+            if (count == index) {
+                return temp.task;
+            }
+            temp = temp.next;
+            count++;
+        }
+        return null;
+    }
+
     public void undo() {
         if (current != null && current.prev != null) {
             current = current.prev;
@@ -121,6 +140,19 @@ public class TaskList {
             temp = temp.next;
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder allTasks = new StringBuilder();
+        Node temp = head;
+        int index = 0;
+        while (temp != null) {
+            allTasks.append(index).append(": ").append(temp.task.toString()).append("\n");
+            temp = temp.next;
+            index++;
+        }
+        return allTasks.toString();
     }
 
 }

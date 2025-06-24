@@ -24,8 +24,9 @@ public class Main {
         jane.addTask("Go for a run");
 
         // Mark a task complete
-        john.completeTask(1);
-        System.out.println("Task 1 marked as completed: " + john.getTasks());
+        john.completeTask(0);
+        System.out.println("\nFirst task marked as completed:");
+        System.out.println(john.getTasks().getTaskAt(0));
 
         // Show task lists
         System.out.println("\n---- John's Tasks ----");
@@ -50,7 +51,7 @@ public class Main {
         taskManager.addTask(task2);
 
         // Show all users from userManagement
-        System.out.println("---- All users in system ----");
+        System.out.println("\n---- All users in system ----");
         userManager.printUsers();
 
         System.out.println("-------------------------------------------------");
