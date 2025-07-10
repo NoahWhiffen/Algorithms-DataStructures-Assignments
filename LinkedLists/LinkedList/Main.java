@@ -1,4 +1,4 @@
-package Assignment3.LinkedList;
+package LinkedLists.LinkedList;
 
 
 public class Main {
