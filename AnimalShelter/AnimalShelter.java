@@ -28,19 +28,43 @@ public class AnimalShelter {
     }
 
     public void enqueue(Animal animal) {
+        if (isFull()) {
+            System.out.println("Shelter is full. Cannot add " + animal.getName());
+            return;
+        }
 
+        animal.setOrder(timestamp++);
+
+        if (animal instanceof Dog) {
+            dogs.add((Dog) animal);
+        } else if (animal instanceof Cat) {
+            cats.add((Cat) animal);
+        } else {
+            System.out.println("Unknown animal. Cannot enqueue.");
+        }
     }
 
     public Animal dequeueAny() {
+        if (isEmpty()) return null;
+        if (dogs.isEmpty()) return dequeueCat();
+        if (cats.isEmpty()) return dequeueDog();
 
+        Dog dog = dogs.peek();
+        Cat cat = cats.peek();
+
+        if (dog.getOrder() < cat.getOrder()) {
+            return dequeueDog();
+        } else {
+            return dequeueCat();
+        }
     }
 
     public Dog dequeueDog() {
-
+        return dogs.poll();
     }
 
     public Cat dequeueCat() {
-
+        return cats.poll();
     }
 
 }
