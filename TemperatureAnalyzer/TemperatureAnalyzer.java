@@ -1,4 +1,4 @@
-package Assignment1;
+package TemperatureAnalyzer;
 // Noah Whiffen - SD 12
 // Average Temp Calculator
 // May 7th, 2025

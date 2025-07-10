@@ -1,4 +1,4 @@
-package Assignment4;
+package StateManagement;
 
 public class StateManagement<T> {
     
