@@ -1,7 +1,3 @@
-// Noah Whiffen - SD 12
-// Animal Shelter/ Queue Assignment
-// July 10th, 2025
-
 package AnimalShelter;
 
 import java.util.LinkedList;
